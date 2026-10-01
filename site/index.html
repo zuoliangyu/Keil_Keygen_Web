@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#eff8f2">
+  <meta name="description" content="选择目标平台与许可类型，填写 Computer ID，在浏览器中生成并复制序列号。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; worker-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>Keil Keygen · 序列号生成</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-chip" viewBox="0 0 32 32"><rect x="7" y="7" width="18" height="18" rx="4"/><rect x="12" y="12" width="8" height="8" rx="1"/><path d="M11 3v4m5-4v4m5-4v4M11 25v4m5-4v4m5-4v4M3 11h4m-4 5h4m-4 5h4m18-10h4m-4 5h4m-4 5h4"/></symbol>
+    <symbol id="icon-key" viewBox="0 0 32 32"><circle cx="11" cy="11" r="6"/><path d="m15.5 15.5 11 11m-4-4 3-3m-7 0 3-3"/><circle cx="9" cy="9" r=".8"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M15 5V4a1 1 0 0 0-1-1H5a2 2 0 0 0-2 2v9a1 1 0 0 0 1 1h1"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Keil Keygen 首页"><span class="brand-mark">K.</span><span>Keil <span class="brand-light">Keygen</span></span></a>
+    <span class="local-badge"><span class="status-dot"></span>本地生成</span>
+  </header>
+
+  <main class="workspace">
+    <div class="intro">
+      <div><h1>为你的设备生成序列号</h1><p>选择平台与许可，填写设备标识，即可生成并复制。</p></div>
+      <span class="intro-note">随用随开，无需安装</span>
+    </div>
+
+    <form id="generator-form" novalidate>
+      <fieldset class="platform-fieldset">
+        <legend class="sr-only">目标平台</legend>
+        <div class="platform-grid">
+          <label class="platform-option"><input type="radio" name="target" value="C51" checked><span class="platform-tile"><svg class="chip-icon"><use href="#icon-chip"/></svg><span class="platform-text"><strong>C51</strong><small>8051 系列</small></span><span class="platform-check"><svg><use href="#icon-check"/></svg></span></span></label>
+          <label class="platform-option"><input type="radio" name="target" value="C251"><span class="platform-tile"><svg class="chip-icon"><use href="#icon-chip"/></svg><span class="platform-text"><strong>C251</strong><small>251 系列</small></span><span class="platform-check"><svg><use href="#icon-check"/></svg></span></span></label>
+          <label class="platform-option"><input type="radio" name="target" value="C166"><span class="platform-tile"><svg class="chip-icon"><use href="#icon-chip"/></svg><span class="platform-text"><strong>C166</strong><small>16 位系列</small></span><span class="platform-check"><svg><use href="#icon-check"/></svg></span></span></label>
+          <label class="platform-option"><input type="radio" name="target" value="ARM"><span class="platform-tile"><svg class="chip-icon"><use href="#icon-chip"/></svg><span class="platform-text"><strong>ARM</strong><small>ARM 系列</small></span><span class="platform-check"><svg><use href="#icon-check"/></svg></span></span></label>
+        </div>
+      </fieldset>
+
+      <div class="content-grid">
+        <section class="form-card" aria-labelledby="form-heading">
+          <div class="card-heading"><h2 id="form-heading">填写设备信息</h2><span>01 / 输入</span></div>
+          <div class="field">
+            <div class="label-row"><label for="cid">设备标识 <span class="label-en">Computer ID</span></label><button class="clear-button" id="clear-button" type="button" disabled>清空</button></div>
+            <input id="cid" name="cid" class="cid-input" type="text" placeholder="XXXXX-XXXXX" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="cid-hint form-error" required>
+            <div class="input-caption"><p id="cid-hint">共 11 个字符，第 6 位为连字符。</p><span id="cid-count" aria-hidden="true">0 / 11</span></div>
+          </div>
+          <div class="field license-field">
+            <label for="license">许可类型</label>
+            <select id="license" name="license" aria-describedby="license-detail" disabled><option value="0">专业开发套件（Plus）</option></select>
+            <p class="field-hint" id="license-detail">Prof. Developers Kit (Plus)</p>
+          </div>
+          <button class="generate-button" id="generate-button" type="submit" disabled><span id="generate-label">正在准备…</span><svg id="generate-icon"><use href="#icon-arrow"/></svg></button>
+          <p class="form-error" id="form-error" role="alert"></p>
+          <p class="keyboard-hint">填写完成后，也可以按 Enter 生成。</p>
+        </section>
+
+        <section class="result-card" id="result-card" aria-labelledby="result-heading" aria-busy="false">
+          <div class="card-heading"><h2 id="result-heading">生成结果</h2><span class="result-status" id="result-status"><span class="status-dot"></span><span id="result-status-text">待生成</span></span></div>
+          <div class="result-glyph"><svg><use href="#icon-key"/></svg></div>
+          <h3 id="result-title">序列号将在这里显示</h3>
+          <p class="result-context" id="result-context">填写左侧信息，生成属于本次配置的结果。</p>
+          <output class="serial-grid is-empty" id="serial-output" aria-label="尚未生成序列号"><span class="code-group">·····</span><span class="code-group">·····</span><span class="code-group">·····</span><span class="code-group">·····</span><span class="code-group">·····</span><span class="code-group">·····</span></output>
+          <div class="result-footer"><p id="result-note">生成后可复制完整序列号。</p><button class="copy-button" id="copy-button" type="button" disabled><svg><use href="#icon-copy"/></svg><span id="copy-label">复制序列号</span></button></div>
+          <div class="manual-copy" id="manual-copy" hidden><label for="manual-serial">请按 Ctrl+C（Mac 为 ⌘C），或长按下方文本复制。</label><textarea id="manual-serial" rows="2" readonly spellcheck="false"></textarea></div>
+        </section>
+      </div>
+    </form>
+
+    <div class="privacy-note"><svg><use href="#icon-lock"/></svg><p>所有计算在当前浏览器完成，设备标识不会上传。</p></div>
+    <details class="help"><summary>设备标识在哪里找？</summary><p>在 Keil 的许可管理窗口中找到 Computer ID，将其完整复制到输入框。请保留原有大小写和半角连字符。</p><p>修改设备标识、目标平台或许可类型后，需要重新生成。连续生成的结果可能不同。</p></details>
+    <noscript><p class="noscript">此页面需要 JavaScript 才能生成序列号，请在浏览器中启用 JavaScript 后刷新。</p></noscript>
+  </main>
+
+  <footer class="site-footer"><span>Keil Keygen</span><span>4 个平台 · 11 种许可</span></footer>
+  <p class="toast" id="toast" role="status" hidden></p>
+  <p class="sr-only" id="announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+</body>
+</html>
