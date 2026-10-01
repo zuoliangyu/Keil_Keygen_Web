@@ -2,6 +2,8 @@
 
 适用于 GitHub Pages 的纯静态序列号工具。采用淡绿白配色和卡片布局，提供平台选择、设备信息填写、序列号生成与复制功能。所有计算均在浏览器内完成。
 
+[在线使用](https://zuoliangyu.github.io/Keil_Keygen_Web/)
+
 ## 本地使用
 
 安装 Node.js 20 或更新版本，在本项目目录运行：
@@ -40,7 +42,7 @@ node tools/preview.mjs
 
 后续推送 `site/` 或发布工作流的修改时自动更新网站。流程直接上传 `site/`，无需安装依赖或构建。所有资源与 Worker 路径均为相对路径，适配仓库子路径和站点根路径。
 
-发布配置见 [.github/workflows/pages.yml](.github/workflows/pages.yml)。远程仓库和线上发布尚未配置完成。
+发布配置见 [.github/workflows/pages.yml](.github/workflows/pages.yml)。本仓库已启用 GitHub Actions 发布，默认分支为 `master`。
 
 ## 目录
 
