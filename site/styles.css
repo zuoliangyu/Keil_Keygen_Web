@@ -29,6 +29,11 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #3b7650; font: 700 18px Consolas, monospace; box-shadow: 0 3px 10px #396e4407; }
 .brand-light { font-weight: 400; color: #627d69; }
 .local-badge { display: flex; align-items: center; gap: 7px; border-radius: 20px; background: #fff; padding: 8px 12px; font-size: 11px; color: #52735c; }
+.header-meta { display: flex; align-items: center; gap: 10px; }
+.author-links { display: flex; gap: 8px; }
+.author-chip { display: inline-flex; align-items: center; gap: 6px; border-radius: 20px; background: #fff; padding: 7px 12px; font-size: 11px; color: #52735c; text-decoration: none; box-shadow: 0 3px 10px #396e4407; transition: color .15s, box-shadow .15s; }
+.author-chip svg { width: 14px; height: 14px; color: #e5729a; }
+.author-chip:hover { color: #2d583b; box-shadow: 0 0 0 1px #a9ceb4; }
 .status-dot { width: 5px; height: 5px; display: inline-block; flex-shrink: 0; border-radius: 50%; background: #83a77c; }
 .workspace { max-width: 1030px; margin: 29px auto 0; padding: 0 26px; }
 .intro { display: flex; justify-content: space-between; align-items: flex-end; gap: 22px; margin: 0 5px 29px; }
@@ -106,6 +111,9 @@ select { height: 48px; font-size: 13px; padding-right: 8px; }
 .help summary:hover { color: #345e41; }
 .help p { margin-top: 10px; padding: 0 12px; }
 .site-footer { display: flex; justify-content: space-between; gap: 15px; max-width: 978px; margin: 40px auto 0; padding: 19px 0 28px; font-size: 10px; color: #75927b; border-top: 1px solid #ddebdc; }
+.site-footer strong { font-weight: 650; color: #4b6d55; }
+.site-footer a { color: #4b6d55; text-underline-offset: 3px; }
+.site-footer a:hover { color: #2d583b; }
 .toast { position: fixed; z-index: 10; left: 50%; bottom: 28px; transform: translateX(-50%); border: 1px solid #bed5b7; border-radius: 12px; box-shadow: 0 6px 25px #294c3012; background: #fff; color: #3f693f; padding: 13px 21px; max-width: calc(100% - 32px); width: max-content; font-size: 12px; line-height: 1.7; }
 .noscript { margin-top: 20px; padding: 15px; background: #fff; border: 1px solid #d6e2d5; border-radius: 12px; color: #8d4338; font-size: 13px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
@@ -139,9 +147,13 @@ select { height: 48px; font-size: 13px; padding-right: 8px; }
   .privacy-note { align-items: flex-start; padding: 0 7px; text-align: center; font-size: 10px; }
   .privacy-note svg { margin-top: 2px; }
   .site-footer { margin: 27px 22px 0; padding-bottom: 22px; }
+  .local-badge { display: none; }
   .toast { bottom: 18px; }
 }
 @media (max-width: 370px) {
+  .site-header { padding: 20px 14px; }
+  .author-chip { padding: 7px 10px; }
+  .site-footer { flex-direction: column; gap: 6px; }
   .workspace { padding: 0 14px; }
   .intro h1 { font-size: 26px; }
   .form-card, .result-card { padding: 22px 19px; }
